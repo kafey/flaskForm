@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<p>Enter names in the fields, then clik "Submit to submit form:</p>
+<form id="form" >
+  First name: <input type="text" name="fname1" required/><br>
+  Last Name: <input type="text" name="frm2" required/><br>
+
+  <input type="button" onclick="myFunction()" value="Submit">
+</form>
+
+<script>
+function myFunction() {
+    //document.getElementById("form").submit();
+
+var formData = JSON.stringify($("#form").serializeArray());
+
+// console.log(formData);
+//validateForm();
+
+  if (validateForm()){
+
+      $.ajax({
+        type: "POST",
+        data : formData,
+        url : "/echo/",
+        dataType : "json",
+        contentType : "application/json",
+        success: function(returnval){
+              if(returnval.msg == "succes"){
+                  window.location.href = "/berhasil";
+            } else{
+                  console.log(returnval);
+            }
+          // console.log(returnval);
+          },
+        error: function(errorThrown) { 
+              console.log(errorThrown); 
+          } 
+
+      });
+  } else {
+    console.log("gagal");
+  }
+}
+function validateForm() {
+    var x = document.forms["form"]["fname1"].value;
+    
+    if (x == null || x  == "") {
+        alert("Name must be filled out");
+        return false;
+    } else {
+        return true;
+    }
+}
+
+</script>
+
+
+{% endblock %}
