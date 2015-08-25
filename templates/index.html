@@ -1,13 +1,89 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<p>Enter names in the fields, then clik "Submit to submit form:</p>
-<form id="form" >
-  First name: <input type="text" name="fname1" required/><br>
-  Last Name: <input type="text" name="frm2" required/><br>
+<div class='well'>
+<p>Masukkan Data Pengirim </p>
 
-  <input type="button" onclick="myFunction()" value="Submit">
+<form id="form" class="form-horizontal">
+  <div class="form-group">
+    <label for="inputPengirim" class="col-sm-2 control-label">Pengirim</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="nama-pengirim" id="inputPengirim" placeholder="Pengirim">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputAlamatkirim" class="col-sm-2 control-label">Alamat</label>
+    <div class="col-sm-10">
+      <input type="text" name="alamat-pengirim" class="form-control" id="inputAlamatkirim" placeholder="Alamat">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputHpkirim" class="col-sm-2 control-label">No HP</label>
+    <div class="col-sm-10">
+      <input type="text" name="hp-pengirim" class="form-control" id="inputHpkirim" placeholder="Hand phone">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputKotaasal" class="col-sm-2 control-label">Kota</label>
+    <div class="col-sm-10">
+      <input type="text" name="kota-asal" class="form-control" id="inputKotaasal" placeholder="Kota">
+    </div>
+  </div> </br>
+  <div> <p>Masukkan Data Penerima </p> </div>
+  <div class="form-group">
+    <label for="inputPenerima" class="col-sm-2 control-label">Penerima</label>
+    <div class="col-sm-10">
+      <input type="text" name="nama-penerima" class="form-control" id="inputPenerima" placeholder="Penerima">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputAlamatterima" class="col-sm-2 control-label">Alamat</label>
+    <div class="col-sm-10">
+      <input type="text" name="alamat-penerima" class="form-control" id="inputAlamatterima" placeholder="Alamat">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputHpkirim" class="col-sm-2 control-label">No HP</label>
+    <div class="col-sm-10">
+      <input type="text" name="hp-penerima" class="form-control" id="inputHpkirim" placeholder="Hand phone">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputKotakirim" class="col-sm-2 control-label">Kota</label>
+    <div class="col-sm-10">
+      <input type="text" name="kota-tujuan" class="form-control" id="inputKotakirim" placeholder="Kota">
+    </div>
+  </div> <br>
+  <div> <p>Masukkan Data Barang </p> </div>
+  <div class="form-group">
+    <label for="inputBarang" class="col-sm-2 control-label">Nama Barang</label>
+    <div class="col-sm-10">
+      <input type="text" name="barang" class="form-control" id="inputBarang" placeholder="Barang">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputBerat" class="col-sm-2 control-label">Berat</label>
+    <div class="col-sm-10">
+      <input type="number" name="berat" class="form-control" id="inputBarang" placeholder="Berat dalam gram">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputLayanan" class="col-sm-2 control-label">Pilih Layanan</label>
+    <div class="col-sm-10">
+      <label class="radio-inline">
+        <input type="radio" name="layanan" id="inlineRadio1" value="yes"> Yes
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="layanan" id="inlineRadio2" value="reguler"> Reguler
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="layanan" id="inlineRadio3" value="ok"> OK
+      </label>
+    </div>
+  </div>
+<input type="button" onclick="myFunction()" value="Submit" class="btn btn-default">
 </form>
+</div>
 
 <script>
 function myFunction() {
@@ -44,17 +120,110 @@ var formData = JSON.stringify($("#form").serializeArray());
   }
 }
 function validateForm() {
-    var x = document.forms["form"]["fname1"].value;
-    
-    if (x == null || x  == "") {
+  
+  var x1 = document.forms["form"]["nama-pengirim"].value;
+  var x2 = document.forms["form"]["alamat-pengirim"].value;
+  var x3 = document.forms["form"]["hp-pengirim"].value;
+  var x4 = document.forms["form"]["kota-asal"].value;
+  var x5 = document.forms["form"]["nama-penerima"].value;
+  var x6 = document.forms["form"]["alamat-penerima"].value;
+  var x7 = document.forms["form"]["hp-penerima"].value;
+  var x8 = document.forms["form"]["kota-tujuan"].value;
+  var x9 = document.forms["form"]["barang"].value;
+  var x10 = document.forms["form"]["berat"].value;
+  var x11 = document.forms["form"]["layanan"].value;
+
+
+
+
+  if (x1 == null || x1  == "") {
+  
+        alert("Nama pengirim must be filled out");
+        return false;
+    }
+  if (x2 == null || x2  == "") {
+  
+        alert("alamat-pengirim be filled out");
+        return false;
+    } 
+  if (x3 == null || x3  == "") {
+  
+        alert("Name must be filled out");
+        return false;
+    } 
+  if (x4 == null || x4  == "") {
+  
+        alert("Name must be filled out");
+        return false;
+    }
+  if (x5 == null || x5  == "") {
+  
+        alert("Name must be filled out");
+        return false;
+    }
+  if (x6 == null || x6  == "") {
+  
+        alert("Name must be filled out");
+        return false;
+    }
+  if (x7 == null || x7  == "") {
+  
+        alert("Name must be filled out");
+        return false;
+    }
+  if (x8 == null || x8  == "") {
+  
+        alert("Name must be filled out");
+        return false;
+    }
+  if (x9 == null || x9  == "") {
+  
+        alert("Name must be filled out");
+        return false;
+    }  
+  if (x10 == null || x10  == "") {
+  
+        alert("Name must be filled out");
+        return false;
+    } 
+  if (x11 == null || x11  == "") {
+  
         alert("Name must be filled out");
         return false;
     } else {
         return true;
     }
+
+    // var array = [
+    //     document.forms["form"]["nama-pengirim"].value,
+    //     document.forms["form"]["alamat-pengirim"].value,
+    //     document.forms["form"]["hp-pengirim"].value,
+    //     document.forms["form"]["kota-asal"].value,
+    //     document.forms["form"]["nama-penerima"].value,
+    //     document.forms["form"]["alamat-penerima"].value,
+    //     document.forms["form"]["hp-penerima"].value,
+    //     document.forms["form"]["kota-tujuan"].value,
+    //     document.forms["form"]["barang"].value,
+    //     document.forms["form"]["berat"].value,
+    //     document.forms["form"]["layanan"].value
+    //     ];
+    
+
+//     for (var x in array) { 
+    
+//     if (x == null || x  == "") {
+  
+//         alert("Name must be filled out");
+//         return false;
+//     } else {
+//         return true;
+//     }
+// }
 }
 
 </script>
+
+
 
 
 {% endblock %}

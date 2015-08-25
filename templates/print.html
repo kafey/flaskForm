@@ -1,7 +1,16 @@
 {% extends "layout.html" %}
 {% block content %}
-<p>Enter names in the fields, then clik "Submit to submit form:</p>
+<p>Daftar Transaksi</p>
 
 
+
+{% for row in nama %}
+  
+    <p> Nama Depan : {{ row['fname1'] }}</p>
+    <p> Nama Belakang : {{ row['frm2'] }}</p>
+    <p> Alamat : {{ row['frm3'] }}</p>
+ 
+
+{% endfor %}
 
 {% endblock %}

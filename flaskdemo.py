@@ -3,26 +3,43 @@ import json
 from flask.ext.pymongo import PyMongo
 
 app = Flask(__name__)
-mongo = PyMongo(app)
+app.config['MONGO_DBNAME'] = 'kirim'
+mongo = PyMongo(app, config_prefix='MONGO')
+
+
 
 @app.route('/')
 def index():
-	online_users = mongo.db.users.find({'online': True})
-	return render_template('index.html', online_users=online_users)
+	# post = {"author":"mike","text":"jiii"}  
+	# posts = mongo.db.posts  
+	# posts.insert(post)
+	# posts = posts.find()
+	return render_template("index.html")
 
 
 @app.route('/echo/', methods=['POST'])
 def echo():
 	data = request.data
-
+	print data
+	data1 = json.loads(data)
+	mydict = {}
+	for dic in data1:
+		mydict.update( { dic['name']:dic['value'] } )
+		
+	mongo.db.transaksi.insert(mydict)
 	varRetrun = {'msg':'succes','code':'200'}
 	varjsonReturn = json.dumps(varRetrun)
 	return varjsonReturn
 
 @app.route('/berhasil/')
 def berhasil():
-	data1 = [1, 2, 3, 4]
-	return render_template('berhasil.html', data1=data1)
+	# nama = mongo.db.transaksi.find()
+	nama = mongo.db.transaksi.find().skip(mongo.db.transaksi.count() - 1)
+	# for item in nama:
+	# 	print item["fname1"]
+	# 	print item["frm2"]
+	# 	print item["frm3"]
+	return render_template('print.html', nama=nama)
 
 
 
